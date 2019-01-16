@@ -28,7 +28,12 @@ class CGDraw
                   tuple<int, int, int, int> RGBAi,
                   tuple<int, int, int, int> RGBAf);
 
-    void DrawTriangle(void);
+    void DrawTriangle(tuple<int, int> XY1,
+                      tuple<int, int> XY2,
+                      tuple<int, int> XY3,
+                      tuple<int, int, int, int> RGBA1,
+                      tuple<int, int, int, int> RGBA2,
+                      tuple<int, int, int, int> RGBA3);
 };
 
 void CGDraw::swap(int &x1, int &y1, int &x2, int &y2)
@@ -46,7 +51,7 @@ float CGDraw::getLength(int xi, int yi, int xf, int yf)
     int dx = xf - xi;
     int dy = yf - yi;
 
-    return(sqrt((dx*dx) + (dy*dx)));
+    return (sqrt((dx * dx) + (dy * dx)));
 }
 
 tuple<int, int, int, int> CGDraw::InterpolarCor(tuple<int, int, int, int> RGBAi, tuple<int, int, int, int> RGBAf, float D)
@@ -82,7 +87,7 @@ void CGDraw::DrawLine(tuple<int, int> XYi, tuple<int, int> XYf,
         Dx, Dy,
         y, x,
         c;
-    float cAng, mx, my, D,distance,TotalDistance;
+    float cAng, mx, my, D, distance, TotalDistance;
     bool flag[3]; //lowHigh,X1,Y1
 
     tie(x1, y1) = XYi;
@@ -115,12 +120,13 @@ void CGDraw::DrawLine(tuple<int, int> XYi, tuple<int, int> XYf,
 
     y = y1;
     x = x1;
-    TotalDistance = getLength(x1,y1,x2,y2);
 
+    TotalDistance = getLength(x1, y1, x2, y2);
     for (x = x1; x < x2; x++)
     {
-        distance = getLength(x,y,x2,y2)/TotalDistance;
-        PutPixel(make_tuple(x, y), InterpolarCor(RGBAi,RGBAf,distance));
+        distance = getLength(x, y, x2, y2) / TotalDistance;
+        PutPixel(make_tuple(x, y), InterpolarCor(RGBAi, RGBAf, distance));
+        // PutPixel(make_tuple(x, y), RGBAi);
         if (D > 0)
         {
             //SE escolhido se cAng>=0, E escolhido se cAng<0
@@ -142,9 +148,14 @@ void CGDraw::DrawLine(tuple<int, int> XYi, tuple<int, int> XYf,
     }
 }
 
-void CGDraw::DrawTriangle(void)
+void CGDraw::DrawTriangle(tuple<int, int> XY1, tuple<int, int> XY2, tuple<int, int> XY3,
+                          tuple<int, int, int, int> RGBA1,
+                          tuple<int, int, int, int> RGBA2,
+                          tuple<int, int, int, int> RGBA3)
 {
-    ;
+    DrawLine(XY1, XY2, RGBA2, RGBA1);
+    DrawLine(XY2, XY3, RGBA2, RGBA3);
+    DrawLine(XY3, XY1, RGBA1, RGBA3);
 }
 
 #endif // _MYGL_H_
