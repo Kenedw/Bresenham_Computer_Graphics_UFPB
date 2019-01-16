@@ -14,10 +14,16 @@ class CGDraw
 {
   private:
     void swap(int &x1, int &y1, int &x2, int &y2);
+
     tuple<int, int, int, int> InterpolarCor(tuple<int, int, int, int> RGBAi,
                                             tuple<int, int, int, int> RGBAf,
                                             float D);
+
     float getLength(int xi, int yi, int xf, int yf);
+
+    tuple<int, int> InterpolarPixel(tuple<int, int> XYi,
+                                    tuple<int, int> XYf,
+                                    float D);
 
   public:
     void PutPixel(tuple<int, int> XY,
@@ -48,8 +54,8 @@ void CGDraw::swap(int &x1, int &y1, int &x2, int &y2)
 
 float CGDraw::getLength(int xi, int yi, int xf, int yf)
 {
-    int dx = xf - xi;
-    int dy = yf - yi;
+    int dx = abs(xf - xi);
+    int dy = abs(yf - yi);
 
     return (sqrt((dx * dx) + (dy * dx)));
 }
@@ -60,6 +66,12 @@ tuple<int, int, int, int> CGDraw::InterpolarCor(tuple<int, int, int, int> RGBAi,
                       get<1>(RGBAf) * D + (1 - D) * get<1>(RGBAi),
                       get<2>(RGBAf) * D + (1 - D) * get<2>(RGBAi),
                       get<3>(RGBAf) * D + (1 - D) * get<3>(RGBAi));
+}
+
+tuple<int, int> CGDraw::InterpolarPixel(tuple<int, int> XYi, tuple<int, int> XYf, float D)
+{
+    return make_tuple(get<0>(XYf) * D + (1 - D) * get<0>(XYi),
+                      get<1>(XYf) * D + (1 - D) * get<1>(XYi));
 }
 
 void CGDraw::PutPixel(tuple<int, int> XY, tuple<int, int, int, int> RGBA)
@@ -126,7 +138,6 @@ void CGDraw::DrawLine(tuple<int, int> XYi, tuple<int, int> XYf,
     {
         distance = getLength(x, y, x2, y2) / TotalDistance;
         PutPixel(make_tuple(x, y), InterpolarCor(RGBAi, RGBAf, distance));
-        // PutPixel(make_tuple(x, y), RGBAi);
         if (D > 0)
         {
             //SE escolhido se cAng>=0, E escolhido se cAng<0
@@ -155,7 +166,7 @@ void CGDraw::DrawTriangle(tuple<int, int> XY1, tuple<int, int> XY2, tuple<int, i
 {
     DrawLine(XY1, XY2, RGBA2, RGBA1);
     DrawLine(XY2, XY3, RGBA2, RGBA3);
-    DrawLine(XY3, XY1, RGBA1, RGBA3);
+    DrawLine(XY3, XY1, RGBA3, RGBA1);
 }
 
 #endif // _MYGL_H_

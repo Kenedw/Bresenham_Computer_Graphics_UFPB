@@ -12,7 +12,7 @@ void MyGlDraw(void)
 	tuple <int,int,int,int> RGBA1 (255,0,0,255); //vermelho
 	tuple <int,int,int,int> RGBA2 (0,255,0,255); //Verde
 	tuple <int,int,int,int> RGBA3 (0,0,255,255); //Azul
-	
+
 	tuple <int,int> XY1 (106,300);
 	tuple <int,int> XY2 (406,300);
 	tuple <int,int> XY3 (256,150);
@@ -25,7 +25,7 @@ void MyGlDraw(void)
 	CG.DrawLine(XYsup,XYinf,RGBA1,RGBA2);
 	CG.DrawLine(XYini,XYfin,RGBA2,RGBA1);
 
-	CG.DrawTriangle(XY1,XY2,XY3,RGBA1,RGBA1,RGBA1);
+	CG.DrawTriangle(XY1,XY2,XY3,RGBA1,RGBA2,RGBA3);
 }
 
 //-----------------------------------------------------------------------------
