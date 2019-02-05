@@ -81,7 +81,7 @@ A função a cima recebe:
 
 <p align="center">
 	<br>
-	<img src="./prints/putPixel.jpg"/ width=510px height=540px>
+	<img src="./prints/putPixel.JPG"/ width=510px height=540px>
 	<h5 align="center">Figure 2 - Pixel vermelho desenhado na tela</h5>
 	<br>
 </p>
