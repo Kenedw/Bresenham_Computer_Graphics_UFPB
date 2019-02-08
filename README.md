@@ -188,7 +188,7 @@ void CGDraw::DrawTriangle(
 ```
 <p align="center">
 	<br>
-	<img src="./prints/drawtriangle.png"/ width=510px height=540px>
+	<img src="./prints/drawtriangle.PNG"/ width=510px height=540px>
 	<h5 align="center">Figure 4 - Representação de um triangulo</h5>
 	<br>
 </p>
