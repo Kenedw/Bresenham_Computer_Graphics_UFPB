@@ -31,7 +31,7 @@ Para se desenhar um pixel, primeiro devemos entender o que é um pixel. Pixel é
 
 <p align="center">
 	<br>
-	<img src="./prints/pixel.jpg"/ width=600px height=400px>
+	<img src="./img/pixel.jpg"/ width=600px height=400px>
 	<h5 align="center">Figure 1 - pixel</h5>
 	<br>
 </p>
@@ -78,7 +78,7 @@ A função a cima recebe:
 
 <p align="center">
 	<br>
-	<img src="./prints/putPixel.PNG"/ width=510px height=540px>
+	<img src="./img/putPixel.PNG"/ width=510px height=540px>
 	<h5 align="center">Figure 2 - Pixel vermelho desenhado na tela</h5>
 	<br>
 </p>
@@ -162,7 +162,7 @@ void CGDraw::DrawLine(tuple<int, int> XYi, tuple<int, int> XYf,
 
 <p align="center">
 	<br>
-	<img src="./prints/drawline.PNG"/ width=510px height=540px>
+	<img src="./img/drawline.PNG"/ width=510px height=540px>
 	<h5 align="center">Figure 3 - Linha desenhada com Bresenham</h5>
 	<br>
 </p>
@@ -188,7 +188,7 @@ void CGDraw::DrawTriangle(
 ```
 <p align="center">
 	<br>
-	<img src="./prints/drawtriangle.PNG"/ width=510px height=540px>
+	<img src="./img/drawtriangle.PNG"/ width=510px height=540px>
 	<h5 align="center">Figure 4 - Representação de um triangulo</h5>
 	<br>
 </p>
